@@ -1,7 +1,7 @@
 package com.example.what_to_play;
 
 
-import com.example.what_to_play.tools.GetUserGameInfo;
+import com.example.what_to_play.tools.LoadUserGameInfo;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,11 +12,10 @@ public class WhatToPlayApplication {
 		//SpringApplication.run(WhatToPlayApplication.class, args);
 		System.out.println("Welcome to what-to-play!");
 
-		GetUserGameInfo info = new GetUserGameInfo("76561198158132974");
+		LoadUserGameInfo info = new LoadUserGameInfo("76561198158132974");
 
-		String tag = info.getGameTags(1086940L);
 		info.getGamesLibrary();
-		System.out.println(tag);
+		info.showGames();
 
 
 
