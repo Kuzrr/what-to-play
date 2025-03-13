@@ -15,8 +15,9 @@ public class WhatToPlayApplication {
 		GetUserGameInfo info = new GetUserGameInfo("76561198158132974");
 
 		String tag = info.getGameTags(1086940L);
-		info.getUserGames();
+		info.getGamesLibrary();
 		System.out.println(tag);
+
 
 
 	}

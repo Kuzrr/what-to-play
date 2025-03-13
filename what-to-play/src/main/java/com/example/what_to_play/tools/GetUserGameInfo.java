@@ -22,10 +22,10 @@ public class GetUserGameInfo {
         this.API_KEY = "6B8FFC968253508CCCE2E5C66068A448";
         this.userId = userId;
         this.client = HttpClient.newHttpClient();
-        ArrayList<Games> games = new ArrayList<>();
+        ArrayList<Games> userGames = new ArrayList<>();
     }
 
-    public void getUserGames(){
+    public void getGamesLibrary(){
         try{
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="+ API_KEY +"&steamid="+ userId +"&format=json&include_appinfo=true"))
@@ -34,7 +34,15 @@ public class GetUserGameInfo {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode root = objectMapper.readTree(response.body());
-            System.out.println(root.toString());
+            JsonNode gamesNode = root.path("response").path("games");
+            int i = 0;
+            for(JsonNode game : gamesNode){
+                //System.out.println(game.get("name").asText());
+                Long appID = game.get("appid").asLong();
+                System.out.println(getGameTags(10L) + i);
+                i++;
+
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
