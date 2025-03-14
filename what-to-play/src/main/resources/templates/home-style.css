@@ -1,0 +1,40 @@
+body{
+    background: #171d25;
+    color: white;
+}
+
+p{
+    font-size: 18px;
+    font-weight: bold;
+}
+h1{
+    font-weight: bold;
+}
+input{
+    width: 400px;
+}
+
+.box{
+    background-color: #212d45;
+    text-align: center;
+    width: 450px;
+    justify-self: center;
+    align-items: center;
+    /*border: 1px black solid;*/
+    box-shadow: 2px 2px 3px #11111188;
+    border-radius: 5px;
+    padding: 15px;
+}
+.container{
+    text-align: center;
+    margin-top: 300px;
+}
+
+
+div p{
+    margin: 2px;
+}
+
+.hello{
+    margin-bottom: 15px;
+}
