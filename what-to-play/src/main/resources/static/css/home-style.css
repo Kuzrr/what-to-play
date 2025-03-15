@@ -1,7 +1,9 @@
 body{
-    background: #171d25;
+    background-color: #171d25;
     color: white;
+    font-family: Consolas, serif;
 }
+
 
 p{
     font-size: 18px;
@@ -27,7 +29,8 @@ input{
 }
 .container{
     text-align: center;
-    margin-top: 300px;
+    margin-top: 200px;
+    width: 600px;
 }
 
 

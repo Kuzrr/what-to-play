@@ -17,21 +17,17 @@ public class GamesController {
         this.gamesService = gamesService;
     }
 
-    @PostMapping("/load")
-    public String loadUserGameLibrary(@RequestParam String steamId) {
-        gamesService.loadGames(steamId);
-        return "User game library loaded";
-    }
+
 
     @GetMapping("/show/allGames")
     public List<Games> showAllGames(){
         return gamesService.getAllGames();
     }
 
-    @GetMapping("/show/byPlaytime")
-    public List<Games> showGamesByPlayTime(@RequestParam(defaultValue = "0") int minTime, @RequestParam(defaultValue = "100000") int maxTime){
-        return gamesService.getAllGamesBetweenHoursPlayed(minTime,maxTime);
-    }
+//    @GetMapping("/show/byPlaytime")
+//    public List<Games> showGamesByPlayTime(@RequestParam(defaultValue = "0") int minTime, @RequestParam(defaultValue = "100000") int maxTime){
+//        return gamesService.getAllGamesBetweenHoursPlayed(minTime,maxTime);
+//    }
 
     @GetMapping("/show/byTags")
     public List<Games> showGamesByTags(@RequestParam String tag){

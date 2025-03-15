@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Lista Gier</h1>
+  <ul>
+  <li th:each="game : ${games}" th:text="${game}"></li>
+  </ul>
+</body>
+</html>

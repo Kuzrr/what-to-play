@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -28,7 +29,10 @@ public class GamesService {
         return gamesRepo.findAll(Sort.by(Sort.Direction.DESC, "hoursPlayed"));
     }
 
-    public List<Games> getAllGamesBetweenHoursPlayed(int min, int max) {
+    public List<Games> getAllGamesBetweenHoursPlayed(String time) {
+        String splitTime = Arrays.toString(time.split(" "));
+        int min = Integer.parseInt(time.split(" ")[0]);
+        int max = Integer.parseInt(time.split(" ")[1]);
         return gamesRepo.findByHoursPlayedBetween(min, max, sort);
     }
 

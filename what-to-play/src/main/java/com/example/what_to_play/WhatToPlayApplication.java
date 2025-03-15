@@ -11,13 +11,11 @@ public class WhatToPlayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WhatToPlayApplication.class, args);
-//		System.out.println("Welcome to what-to-play!");
 //
-//		LoadUserGameInfo info = new LoadUserGameInfo("76561198158132974");
-//
-//		info.loadGamesLibrary();
-//		info.showGames();
-
+//		String time = "15 20";
+//		int min = Integer.parseInt(time.split(" ")[0]);
+//		int max = Integer.parseInt(time.split(" ")[1]);
+//		System.out.println(min + max);
 
 
 	}
