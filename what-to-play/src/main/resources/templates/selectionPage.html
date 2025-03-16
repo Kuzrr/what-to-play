@@ -57,19 +57,20 @@
 
 
         <form th:method="GET" th:action="@{/filtered}">
-            <h3>Wybierz czas rozgrywki</h3>
-            <input type="radio" id="new" name="time" value="0 0" checked="checked">
-            <label for="new">Coś nowego</label><br>
-            <input type="radio" id="played-little" name="time" value="1 10">
-            <label for="played-little">Coś w miare nowego</label><br>
-            <input type="radio" id="played-some" name="time" value="11 50">
-            <label for="played-some">Troche pograłem</label><br>
-            <input type="radio" id="played-much" name="time" value="51 100">
-            <label for="played-much">Coś znajomego</label><br>
-            <input type="radio" id="played-veryMuch" name="time" value="101 10000">
-            <label for="played-veryMuch">Coś co dobrze znam</label><br>
+            <h3>Twój staż w grze</h3>
             <input type="radio" id="everything" name="time" value="0 1000000">
-            <label for="everything">Bez znaczenia</label><br><br>
+            <label for="everything">Bez znaczenia (Bez zmian)</label><br>
+            <input type="radio" id="new" name="time" value="0 0" checked="checked">
+            <label for="new">Coś nowego (0h)</label><br>
+            <input type="radio" id="played-little" name="time" value="1 10">
+            <label for="played-little">Lekko ograna (1–10h)</label><br>
+            <input type="radio" id="played-some" name="time" value="11 50">
+            <label for="played-some">Ograna (11–50h)</label><br>
+            <input type="radio" id="played-much" name="time" value="51 100">
+            <label for="played-much">Dobrze znana (51–100h)</label><br>
+            <input type="radio" id="played-veryMuch" name="time" value="101 10000">
+            <label for="played-veryMuch">Bardzo dobrze znana (100h+)</label><br><br>
+
             <h3>Wybierz kategorie</h3>
             <input type="radio" id="nothing" name="tag"  value="" text="Każda" checked = "checked">
             <label for="nothing">Wszystkie</label>
@@ -79,6 +80,7 @@
             <br>
             <input type="submit" value="Wyślij" class="btn btn-primary" id="button1">
             <a href = "http://localhost:8080/allGames" class="btn btn-primary" id="button2" >Wszystkie gry</a>
+            <a href = "http://localhost:8080/stats" class="btn btn-primary" id="button2" >Moje statystyki</a>
 
         </form>
 

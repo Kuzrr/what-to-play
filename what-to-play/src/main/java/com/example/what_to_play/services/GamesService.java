@@ -4,6 +4,7 @@ package com.example.what_to_play.services;
 import com.example.what_to_play.tables.Games;
 import com.example.what_to_play.tables.GamesRepo;
 import com.example.what_to_play.tools.LoadUserGameInfo;
+import com.example.what_to_play.tools.Stats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -63,5 +64,14 @@ public class GamesService {
         ArrayList<Games> gamesToLoad = loeader.getUserGames();
         gamesRepo.saveAll(gamesToLoad);
 
+    }
+
+    public Stats getStats(){
+        int totalPlaytime = gamesRepo.getTotalPlaytime();
+        String favoriteGame = gamesRepo.getFavoriteGame();
+        String favoriteCategory = gamesRepo.getFavoriteCategory();
+        int gamesCount = gamesRepo.getTotalGames();
+        Stats stats = new Stats(favoriteGame, favoriteCategory, gamesCount, totalPlaytime);
+        return stats;
     }
 }

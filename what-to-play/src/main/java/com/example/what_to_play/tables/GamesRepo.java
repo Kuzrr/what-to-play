@@ -22,4 +22,16 @@ public interface GamesRepo extends JpaRepository<Games, Long> {
     List<Games> findByHoursAndTag(@Param("minHours") int minHours,
                                  @Param("maxHours") int maxHours,
                                  @Param("tag") String tag, Sort sort);
+
+    @Query("SELECT SUM(g.hoursPlayed) FROM Games g")
+    Integer getTotalPlaytime();
+
+    @Query("SELECT g.tags FROM Games g GROUP BY g.tags ORDER BY SUM(g.hoursPlayed) DESC LIMIT 1")
+    String getFavoriteCategory();
+
+    @Query("SELECT g.name FROM Games g ORDER BY g.hoursPlayed DESC LIMIT 1")
+    String getFavoriteGame();
+
+    @Query("SELECT COUNT(g) FROM Games g")
+    int getTotalGames();
 }

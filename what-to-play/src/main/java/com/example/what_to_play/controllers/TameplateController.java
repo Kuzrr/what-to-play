@@ -1,5 +1,6 @@
 package com.example.what_to_play.controllers;
 
+import com.example.what_to_play.tools.Stats;
 import org.springframework.ui.Model;
 import com.example.what_to_play.services.GamesService;
 import com.example.what_to_play.tables.Games;
@@ -53,10 +54,11 @@ public class TameplateController {
         return "filtered";
     }
 
-    @GetMapping("/x")
-    public List<Games> x(@RequestParam String time, @RequestParam String tag) {
-        List<Games> games = gamesService.getAllGamesBetweenHoursPlayedAndContaingTags(time, tag);
-        return games;
+    @GetMapping("/stats")
+    public String stats(Model model) {
+        Stats stats = gamesService.getStats();
+        model.addAttribute("stats", stats);
+        return "stats";
     }
 
 }
