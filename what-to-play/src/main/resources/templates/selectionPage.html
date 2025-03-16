@@ -71,8 +71,10 @@
             <input type="radio" id="everything" name="time" value="0 1000000">
             <label for="everything">Bez znaczenia</label><br><br>
             <h3>Wybierz kategorie</h3>
+            <input type="radio" id="nothing" name="tag"  value="" text="Każda" checked = "checked">
+            <label for="nothing">Wszystkie</label>
             <div th:each="tag : ${tags}">
-                <input type="radio" id="tag" name="tag"  th:value="${tag}" th:text="${tag}" checked = "checked">
+                <input type="radio" id="tag" name="tag"  th:value="${tag}" th:text="${tag}">
             </div>
             <br>
             <input type="submit" value="Wyślij" class="btn btn-primary" id="button1">

@@ -9,6 +9,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class LoadUserGameInfo {
 
@@ -48,9 +49,9 @@ public class LoadUserGameInfo {
                 Long appID = game.get("appid").asLong();
                 String name = game.get("name").asText();
                 int hoursPlayed = game.get("playtime_forever").asInt() / 60;
-                String tag = getGameTagsApi2(appID);
+                String tag = getGameTagsApi2(appID).toLowerCase(Locale.ROOT);
                 if (tag.equals("")) {
-                    tag = getGameTagsApi1(appID);
+                    tag = getGameTagsApi1(appID).toLowerCase(Locale.ROOT);
                 }
                 userGames.add(new Games(appID, name, hoursPlayed, tag));
                 i++;
