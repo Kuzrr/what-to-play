@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class TameplateController {
@@ -32,7 +33,9 @@ public class TameplateController {
     }
 
     @GetMapping("/selectionPage")
-    public String selectionPage() {
+    public String selectionPage(Model model) {
+        Set<String> allTags = gamesService.getAllUniqueTags();
+        model.addAttribute("tags", allTags);
         return "selectionPage";
     }
 
@@ -40,14 +43,20 @@ public class TameplateController {
     public String allGames(Model model) {
         List<Games> games = gamesService.getAllGames();
         model.addAttribute("games", games);
-        return "AllGames";
+        return "allGames";
     }
 
-    @GetMapping("/byPlaytime")
-    public String byPlaytime(Model model, @RequestParam String time) {
-        List<Games> games = gamesService.getAllGamesBetweenHoursPlayed(time);
+    @GetMapping("/filtered")
+    public String byPlaytime(@RequestParam String time, @RequestParam String tag, Model model) {
+        List<Games> games = gamesService.getAllGamesBetweenHoursPlayedAndContaingTags(time, tag);
         model.addAttribute("games", games);
-        return "byPlaytime";
+        return "filtered";
+    }
+
+    @GetMapping("/x")
+    public List<Games> x(@RequestParam String time, @RequestParam String tag) {
+        List<Games> games = gamesService.getAllGamesBetweenHoursPlayedAndContaingTags(time, tag);
+        return games;
     }
 
 }

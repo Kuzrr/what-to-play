@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class GamesController {
 
+    @Autowired
     private final GamesService gamesService;
 
     public GamesController(GamesService gamesService) {
@@ -32,6 +33,18 @@ public class GamesController {
     @GetMapping("/show/byTags")
     public List<Games> showGamesByTags(@RequestParam String tag){
         return gamesService.getGamesByTags(tag);
+    }
+
+    @GetMapping("/show/filtered")
+    public List<Games> byPlaytime(@RequestParam String time, @RequestParam String tag) {
+        List<Games> games = gamesService.getAllGamesBetweenHoursPlayedAndContaingTags(time, tag);
+        return games;
+    }
+
+    @GetMapping("/x")
+    public List<Games> x(@RequestParam String time, @RequestParam String tag) {
+        List<Games> games = gamesService.getAllGamesBetweenHoursPlayedAndContaingTags(time, tag);
+        return games;
     }
 
 }

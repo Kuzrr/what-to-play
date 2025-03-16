@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class GamesService {
@@ -29,11 +31,25 @@ public class GamesService {
         return gamesRepo.findAll(Sort.by(Sort.Direction.DESC, "hoursPlayed"));
     }
 
-    public List<Games> getAllGamesBetweenHoursPlayed(String time) {
-        String splitTime = Arrays.toString(time.split(" "));
+    public Set<String> getAllUniqueTags(){
+        List<String> tagStrings = gamesRepo.findAllTags();
+        return tagStrings.stream()
+                .flatMap(tags -> Arrays.stream(tags.split(", ")))
+                .map(String::trim)
+                .filter(tag -> !tag.isEmpty())
+                .collect(Collectors.toSet());
+
+    }
+    public List<Games> x(){
+        List<Games> gamesList = gamesRepo.findByHoursAndTag(50,250,"Action", sort);
+        return gamesList;
+    }
+
+
+    public List<Games> getAllGamesBetweenHoursPlayedAndContaingTags(String time, String tag) {
         int min = Integer.parseInt(time.split(" ")[0]);
         int max = Integer.parseInt(time.split(" ")[1]);
-        return gamesRepo.findByHoursPlayedBetween(min, max, sort);
+        return gamesRepo.findByHoursAndTag(min, max, tag, sort);
     }
 
     public List<Games> getGamesByTags(String tag) {
